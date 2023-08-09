@@ -37,7 +37,7 @@ class BeanRepositoryTest {
     public void 복수_저장_테스트() throws Exception{
         // when
         beanRepository.saveAll(beanList);
-        List<Long> beanIdList = beanList.stream().map(b -> b.getId()).collect(Collectors.toList());
+        List<java.lang.Long> beanIdList = beanList.stream().map(b -> b.getId()).collect(Collectors.toList());
         List<Bean> beans = beanRepository.findBeans(beanIdList);
         boolean isMatch = beans.stream().map(Bean::getId).allMatch(beanIdList::contains);
         Assertions.assertEquals(true, isMatch);

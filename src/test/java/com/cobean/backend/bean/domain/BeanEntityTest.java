@@ -14,7 +14,7 @@ class BeanEntityTest {
         //given
         String name = "케냐&에티오피아";
         Roasters roasters = new Roasters("테스트_로스터스");
-        Long price = 40000L;
+        java.lang.Long price = 40000L;
         String cupnoteList = "호두";
         // when
         Bean bean = new Bean(name, 200, price, roasters, cupnoteList, "", "");

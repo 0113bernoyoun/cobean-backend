@@ -1,9 +1,12 @@
 package com.cobean.backend.bean.domain;
 
 import com.cobean.backend.roasters.domain.Roasters;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import org.springframework.util.Assert;
+
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -12,19 +15,20 @@ public class Bean {
     @Id
     @Column(name = "bean_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private java.lang.Long id;
 
     private String name;
 
-    private Long price;
+    private java.lang.Long price;
 
-    @ManyToOne(fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roasters_id")
+    @JsonIgnore
     private Roasters roasters;
 
     private Integer size;
 
-    private Long likes;
+    private Long likes = 0L;
 
     private String cupnoteList;
 
@@ -61,5 +65,4 @@ public class Bean {
         }
 
     }
-
 }

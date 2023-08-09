@@ -9,6 +9,7 @@ import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -23,8 +24,10 @@ public class Roasters {
     @OneToOne(mappedBy = "roasters")
     private User user;
 
-    @OneToMany(mappedBy = "roasters")
+    @OneToMany(mappedBy = "roasters", fetch = FetchType.EAGER)
     private List<Bean> beanList = new ArrayList<>();
+
+    private Boolean isDeleted = false;
 
     public Roasters(String name) {
         this.name = name;
@@ -44,7 +47,7 @@ public class Roasters {
 
     public void removeBean(Bean bean) {
         for (int i = 0; i < beanList.size(); i++) {
-            if (beanList.get(i).equals(bean.getId())) {
+            if (beanList.get(i).getId().equals(bean.getId())){
                 beanList.remove(i);
                 return;
             }
@@ -52,6 +55,11 @@ public class Roasters {
 
         throw new CustomException(ExceptionType.BEAN_NOT_FOUND);
     }
+
+    public void deleteRoasters(){
+        this.isDeleted = true;
+    }
+
 
 
 }

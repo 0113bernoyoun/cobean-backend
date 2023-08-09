@@ -2,7 +2,6 @@ package com.cobean.backend.roasters.domain;
 
 import com.cobean.backend.bean.domain.Bean;
 import com.cobean.backend.bean.fixture.BeanFixtures;
-import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

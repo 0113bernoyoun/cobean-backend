@@ -1,1 +1,12 @@
+spring:
+  profiles:
+    active: local
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
+server:
+  port: 8082
 
